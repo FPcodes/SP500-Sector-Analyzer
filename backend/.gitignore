@@ -1,0 +1,11 @@
+# database
+instance/
+
+# virtual env
+flask-env/
+
+# env variables
+.env
+
+#python misc code
+api/__pycache__/
