@@ -5,14 +5,14 @@ function Docs() {
         <main id="docs-main">
             <div id="docs-header">
                 <h1>"Explore the S&P 500 Sector Analyzer”</h1>
-                <p>Welcome to a guide designed to offer concise and vital 
-                information<br/> about each company within its respective sector, 
-                while also providing<br/> historical performance 
+                <p>Welcome to a guide designed to offer <span className="yellowtext">concise</span> and <span className="yellowtext">vital </span>
+                information about each company within its respective sector, 
+                while also providing  historical performance 
                 for each sector. 
                 </p>
             </div>
             <div className="docs-section">
-                <h1 id="sectorsinclude-header"><span>11</span> sectors inside include</h1>
+                <h1 id="sectorsinclude-header"><span className="yellowtext">11</span> sectors inside include</h1>
                     <div id="griddy">
                         <div><strong>Communication Services:</strong> Provides communication and content services, including telecommunications, media, and entertainment</div>
                         <div><strong>Consumer Discretionary:</strong> Encompasses businesses that offer non-essential goods and services, such as retail, automotive, and leisure</div>

@@ -109,7 +109,7 @@ const sortedCompanies = useMemo(() => {
         }
 
         if (tableauContainerRef.current) {
-            vizRef.current = new window.tableau.Viz(tableauContainerRef.current, vizUrl, { hideTabs: true });
+            vizRef.current = new window.tableau.Viz(tableauContainerRef.current, vizUrl, { height: '300px', width: '100%' }, { hideTabs: true });
         }
     }, []);
 

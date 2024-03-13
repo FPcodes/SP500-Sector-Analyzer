@@ -29,7 +29,7 @@
       #docs-header p {
         font-size: 1.5rem;
         text-align: center;
-        line-height: 2;
+        line-height: 1.75;
         margin: 0;
       }
       .docs-section {
@@ -40,7 +40,6 @@
       }
       .docs-section span {
         font-size: 2.5rem;
-        color: #f8b400;
       }
       .docs-section strong {
         font-family: "Quicksand", sans-serif;
@@ -50,13 +49,15 @@
       .docs-section #griddy {
         display: grid;
         grid-template-columns: repeat(2, auto);
-        column-gap: 50px;
         row-gap: 25px;
       }
       .docs-section #griddy > div {
         border: 1px #faf5e4 solid;
-        height: 200px;
-        margin: 0 20px;
-        font-size: 1.25rem;
+        height: 215px;
+        margin: 0 5px;
+        font-size: 1rem;
+      }
+      .yellowtext {
+        color: #f8b400;
       }
 }
