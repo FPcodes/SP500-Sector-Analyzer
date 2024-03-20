@@ -9,3 +9,6 @@ flask-env/
 
 #python misc code
 api/__pycache__/
+
+# Wsgi server
+backend/__pycache__/
