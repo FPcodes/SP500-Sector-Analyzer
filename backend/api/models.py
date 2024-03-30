@@ -1,7 +1,7 @@
 from . import db
 
 class SP500_Realtime_Data(db.Model):
-    __tablename__ = "SP500_Realtime_Data"
+    __tablename__ = "sp500_realtime_data"
     id = db.Column(db.Integer, primary_key=True)
     ticker = db.Column(db.String(255))
     company = db.Column(db.String(255))

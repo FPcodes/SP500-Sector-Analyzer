@@ -7,7 +7,7 @@ flask-env/
 # env variables
 .env
 
-#python misc code
+# python misc code
 api/__pycache__/
 
 # Wsgi server
