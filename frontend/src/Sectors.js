@@ -13,7 +13,7 @@ function Sectors() {
     useEffect(() => {
         const fetchSectorData = async () => {
             try {
-                const response = await fetch('/api/sectors');
+                const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/sectors`);
                 const jsonData = await response.json();
                 setData(jsonData); // Assuming jsonData is an array of sectors with companies
             } catch (error) {

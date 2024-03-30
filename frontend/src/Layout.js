@@ -13,7 +13,7 @@ const Layout = ({ children }) => {
       useEffect(() => {
         async function fetchVooData() {
           try {
-            const response = await fetch('/voo/api'); // Make sure this endpoint matches your Flask API
+            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/voo/api`); // Make sure this endpoint matches your Flask API
             const data = await response.json();
             setVooData({
               firstDayPrice: `${data.first_day_close}`,
