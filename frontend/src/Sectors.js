@@ -109,7 +109,7 @@ const sortedCompanies = useMemo(() => {
         }
 
         if (tableauContainerRef.current) {
-            vizRef.current = new window.tableau.Viz(tableauContainerRef.current, vizUrl, { height: '300px', width: '100%' }, { hideTabs: true });
+            vizRef.current = new window.tableau.Viz(tableauContainerRef.current, vizUrl, { height: '500px', width: '100%' }, { hideTabs: true });
         }
     }, []);
 
@@ -146,7 +146,7 @@ const sortedCompanies = useMemo(() => {
                 <>
                   <div id="button-container">
                     <div className="button-items">
-                        <button className="btn" onClick={handlePrevious}>Previous</button>
+                        <button className="btn" onClick={handlePrevious}>Prev</button>
                         <button className="btn" onClick={handleNext}>Next</button>
                     </div>
                     <h2 className="sector-heading">{currentSector.sector}</h2>

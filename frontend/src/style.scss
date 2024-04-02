@@ -89,7 +89,7 @@ table {
       .navbar-left {
         display: flex;
         align-items: center;
-        gap: 25px;
+        gap: 17.5px;
         padding-left: 5px;
       }
       .navbar-right {
@@ -98,8 +98,9 @@ table {
         align-items: flex-end;
         padding-left: 0;
         padding-right: 5px;
+        font-size: 13.5px;
       }
-      .fa-house, .fa-book {
+      .fa-house, .fa-book, .fa-chart-column {
         color: black;
         font-size: 30px;
       }
@@ -159,9 +160,21 @@ table {
         background-color: #2c786c;
         filter: brightness(1.25);
       }
-}  
+}
+
+@media only screen and (min-width: 420px) {
+  .navbar-right {
+    font-size: 1rem;
+  }
+}
 
 @media (min-width: 768px)  { /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
+  .navbar-left {
+    gap: 30px;
+  }
+  .navbar-right {
+    font-size: 1rem;
+  }
 
   .sector-heading {
     flex: 1;

@@ -15,7 +15,7 @@
         color: #faf5e4;
       }
       #docs-main h1 {
-        font-size: 2.25rem;
+        font-size: 2rem;
         padding: 4px 0;
         margin: 0;
         text-align: center;
@@ -26,10 +26,10 @@
       #docs-header {
         background-color: #2c786c;
       }
-      #docs-header p {
-        font-size: 1.5rem;
+      #docs-header > p {
+        font-size: 1rem;
         text-align: center;
-        line-height: 1.75;
+        line-height: 2;
         margin: 0;
       }
       .docs-section {
@@ -53,11 +53,25 @@
       }
       .docs-section #griddy > div {
         border: 1px #faf5e4 solid;
-        height: 215px;
+        height: 250px;
         margin: 0 5px;
         font-size: 1rem;
       }
       .yellowtext {
         color: #f8b400;
       }
+}
+
+@media (min-width: 700px)  { /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
+  
+  #docs-header > p {
+    font-size: 1.15rem;
+  } 
+
+  .docs-section #griddy > div {
+    border: 1px #faf5e4 solid;
+    height: 150px;
+    margin: 0 5px;
+    font-size: 1.15rem;
+  }
 }

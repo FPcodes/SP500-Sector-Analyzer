@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Layout from './Layout';
 import Sectors from './Sectors'
 import Docs from './Docs'
+import Dashboard from './Dashboard'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/home" element={<Sectors />} />
           <Route path="/sectors" element={<Sectors />} />
           <Route path="/docs" element={<Docs />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </Layout>
     </Router>

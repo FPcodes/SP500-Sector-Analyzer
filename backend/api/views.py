@@ -23,31 +23,22 @@ def sectors():
 
 @main.route('/voo/api', methods=['GET'])
 def voo_price():
-    # Create a Ticker object for VOO
     voo = yf.Ticker("VOO")
+    hist = voo.history(period="2d")  # Fetching data for the last two days
 
-    # Calculate the first day of the current month and format today's date
-    today = datetime.today()
-    first_day_of_month = today.replace(day=1)
-    first_day_of_month_str = first_day_of_month.strftime('%Y-%m-%d')
-    today_str = today.strftime('%Y-%m-%d')
+    # Get the latest and previous closing prices
+    latest_close = hist['Close'].iloc[-1]
+    previous_close = hist['Close'].iloc[-2]
 
-    # Fetch historical data
-    voofirst = voo.history(start=first_day_of_month_str, end=(first_day_of_month + timedelta(days=1)).strftime('%Y-%m-%d'))
-    voosecond = voo.history(start=today_str, end=(today + timedelta(days=1)).strftime('%Y-%m-%d'))
+    # Calculate price difference
+    price_difference = latest_close - previous_close
 
-    # Initialize response data
+    # Format the response data
     response_data = {
-        "first_day_close": None,
-        "current_day_close": None,
-        "price_difference": None
+        "vooprice": f"{latest_close:.2f}",
+        "lastupdated": hist.index[-1].strftime("%Y-%m-%d"),
+        "priceDifference": f"{price_difference:.2f}" if price_difference >= 0 else f"-{abs(price_difference):.2f}"
     }
-
-    # Check if data is available and calculate the difference
-    if not voofirst.empty and not voosecond.empty:
-        response_data["first_day_close"] = voofirst['Close'].iloc[0].round(2)
-        response_data["current_day_close"] = voosecond['Close'].iloc[0].round(2)
-        response_data["price_difference"] = round(response_data["current_day_close"] - response_data["first_day_close"], 2)
 
     return jsonify(response_data)
 
