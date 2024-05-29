@@ -32,7 +32,6 @@ const Layout = ({ children }) => {
               <ul className="navbar-left">
                   <li><Link to="/sectors"><i className="fa-solid fa-house"></i></Link></li>
                   <li><Link to="/docs"><i className="fa-solid fa-book"></i></Link></li>
-                  <li><Link to="/dashboard"><i className="fa-solid fa-chart-column"></i></Link></li>
               </ul>
               <ul className="navbar-right">
                 <div id="navbarprice">

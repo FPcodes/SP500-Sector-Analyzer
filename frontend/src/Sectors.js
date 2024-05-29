@@ -1,13 +1,11 @@
-import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useMemo, useRef} from 'react';
 
 function Sectors() {
     const [data, setData] = useState([]); // Store the fetched data
     const [currentSectorIndex, setCurrentSectorIndex] = useState(0); // Current displayed sector index
     const [currentView, setCurrentView] = useState('table'); // Current view: 'graph', 'table', or 'map'
     const [sortConfig, setSortConfig] = useState({ key: null, direction: 'ascending' });
-    const tableauContainerRef = useRef(null); // Ref for sector-specific graphs
     const sixMonthContainerRef = useRef(null); // Ref for the six-month graph
-    const vizRef = useRef(null); // This will hold the current Tableau visualization for sectors
     const sixMonthVizRef = useRef(null); // This will hold the six-month graph Tableau visualization
 
     useEffect(() => {
@@ -21,7 +19,7 @@ function Sectors() {
             }
         };
 
-        fetchSectorData();
+        fetchSectorData(); 
     }, []);
 
     const handleNext = () => {
@@ -86,33 +84,6 @@ const sortedCompanies = useMemo(() => {
 
 
     // Tableau Code below
-
-    const initViz = useCallback((sectorIndex) => {
-        const tableauUrls = [
-            "https://public.tableau.com/views/SP500Charts/CommunicationServicesDifference",
-            "https://public.tableau.com/views/SP500Charts/ConsumerDiscretionaryDifference",
-            "https://public.tableau.com/views/SP500Charts/ConsumerStaplesDifference",
-            "https://public.tableau.com/views/SP500Charts/EnergyDifference",
-            "https://public.tableau.com/views/SP500Charts/FinancialsDifference",
-            "https://public.tableau.com/views/SP500Charts/HealthCareDifference",
-            "https://public.tableau.com/views/SP500Charts/IndustrialsDifference",
-            "https://public.tableau.com/views/SP500Charts/InformationTechnologyDifference",
-            "https://public.tableau.com/views/SP500Charts/MaterialsDifference",
-            "https://public.tableau.com/views/SP500Charts/RealEstateDifference",
-            "https://public.tableau.com/views/SP500Charts/UtilitiesDifference",
-        ];
-        const vizUrl = tableauUrls[sectorIndex];
-        // Dispose the existing visualization if present
-        if (vizRef.current !== null) {
-            vizRef.current.dispose();
-            vizRef.current = null;
-        }
-
-        if (tableauContainerRef.current) {
-            vizRef.current = new window.tableau.Viz(tableauContainerRef.current, vizUrl, { height: '500px', width: '100%' }, { hideTabs: true });
-        }
-    }, []);
-
     // Initialize the six-month graph
     useEffect(() => {
         const sixMonthVizUrl = "https://public.tableau.com/views/SP500SixMonthsVolumeBarCharts/SixMonthsPercentageDifference";
@@ -121,18 +92,6 @@ const sortedCompanies = useMemo(() => {
         }
     }, []); // Empty dependency array to run only once on mount
 
-    useEffect(() => {
-        if (currentView === 'graph') {
-            initViz(currentSectorIndex); // Initialize sector-specific graph based on current sector
-        }
-        // Cleanup function to dispose viz on component unmount or view change
-        return () => {
-            if (vizRef.current !== null) {
-                vizRef.current.dispose();
-                vizRef.current = null;
-            }
-        };
-    }, [currentView, currentSectorIndex, initViz]);
       
     return (
         <main>
@@ -151,7 +110,6 @@ const sortedCompanies = useMemo(() => {
                     </div>
                     <h2 className="sector-heading">{currentSector.sector}</h2>
                     <div id="buttonitems-right" className="button-items">
-                        <button className="btn" onClick={() => changeView('graph')}>Graph</button>
                         <button className="btn" onClick={() => changeView('table')}>Table</button>
                     </div>
                   </div>
@@ -203,14 +161,6 @@ const sortedCompanies = useMemo(() => {
                             ))}
                             </tbody>
                         </table>
-                        </div>
-                        </>
-                    )}
-                    {currentView === 'graph' && (
-                        <>
-                        <h2 className="section-heading">Graph for {currentSector.sector}</h2>
-                        <div id="graph-container">
-                            <div ref={tableauContainerRef} id="graph-container"></div>
                         </div>
                         </>
                     )}
